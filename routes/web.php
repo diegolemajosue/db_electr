@@ -58,3 +58,12 @@ route::post('/provedor/update/{prov_id}','provedorController@update')->name('pro
 route::post('/provedor/destroy/{prov_id}','provedorController@destroy')->name('provedor.destroy');
 
 
+Route::post('/facturas_detalle','FacturasController@detalle')->name('facturas.detalle');
+
+Route::resource('facturas','facturasController');
+
+Route::get('/factura_pdf/{fac_id}','FacturasController@facturas_pdf')->name('facturas.pdf');;
+
+
+
+
