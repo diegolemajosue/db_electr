@@ -58,7 +58,7 @@ class InventarioController extends Controller
     {
         $data=$request->all();
         //$data['password']=bcrypt($data['password']);
-       
+   
         Inventario::create($data);
         
         return redirect(route('inventario'));
@@ -99,8 +99,14 @@ class InventarioController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $data=$request->all();
+        $oldcantidad=$data['oldcantidad'];
+        $inv_cantidad=$data['inv_cantidad'];
+        $inv_cantidad=$oldcantidad+$inv_cantidad;
+        $data['inv_cantidad']="$inv_cantidad";
+      
         $inv=inventario::find($id);
-        $inv->update($request->all());
+        $inv->update($data);
          return redirect(route('inventario'));
     }
 
